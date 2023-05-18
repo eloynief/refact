@@ -1,18 +1,19 @@
-package refactor;
+package divisores;
 
 import java.util.Scanner;
 
 public class Ejercicio1 {
 
 	public static void main(String[] args) {
-		int numero;
+		int numeroUsuario;
 		long numDivisores;
 		Scanner sc = new Scanner(System.in);
 		
-		numero = sc.nextInt();
-		numDivisores = primeDivisors(numero);
+		numeroUsuario = sc.nextInt();
+		numDivisores = primeDivisors(numeroUsuario);
 		
-		System.out.println("Número de divisores: " + numDivisores);
+		String string = "Número de divisores: ";
+		System.out.println(string + numDivisores);
 		sc.close();
 	}
 
@@ -20,8 +21,9 @@ public class Ejercicio1 {
 		int cont = 0;
 		
 		for(int i=2; i<=number; i++) {
-			boolean esDivisor = number%i==0;
-			if(esDivisor && esPrimo(i)) {
+			long modulo = number%i;
+			boolean esDivisor = modulo==0;
+			if(esDivisor && isPrime(i)) {
 				cont++;
 			}
 		}
@@ -29,7 +31,7 @@ public class Ejercicio1 {
 		return cont;
 	}
 	
-	public static boolean esPrimo(int numero) {
+	public static boolean isPrime(int numero) {
 		boolean esPrimo = true;
 		for(int i=2; i<numero; i++) {
 			if(numero%i == 0) {
